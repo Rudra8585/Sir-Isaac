@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://pu7maqf4snrj"]
+
+[ext_resource type="Script" uid="uid://cw83sp1ick6jv" path="res://Scripts/dual_door_button.gd" id="1_ol6uq"]
+[ext_resource type="Texture2D" uid="uid://b6u0kos05ulmf" path="res://Sprites/button.png" id="2_7jat5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iju5o"]
+size = Vector2(32, 16)
+
+[node name="Button" type="Area2D" unique_id=409628818]
+collision_mask = 6
+script = ExtResource("1_ol6uq")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1107878798]
+texture = ExtResource("2_7jat5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1456303010]
+position = Vector2(0, 8)
+shape = SubResource("RectangleShape2D_iju5o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

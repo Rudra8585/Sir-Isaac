@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://ch3hvcuecib2y"]
+
+[ext_resource type="Script" uid="uid://bim0j40mql8h" path="res://Scripts/gate.gd" id="1_hn85u"]
+[ext_resource type="Texture2D" uid="uid://c6pr4ibckfeny" path="res://Sprites/Bar_gate (2).png" id="2_hn85u"]
+[ext_resource type="AudioStream" uid="uid://bnq14ya0gluex" path="res://Sound effects/Gate Open.wav" id="3_4dmbs"]
+[ext_resource type="AudioStream" uid="uid://dccgroxckm58p" path="res://Sound effects/Gate Close.wav" id="4_dyksl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kfxhe"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(0, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dmbs"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(64, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dyksl"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(128, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_03n5m"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(192, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atm3l"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(256, 0, 64, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3dsh"]
+atlas = ExtResource("2_hn85u")
+region = Rect2(320, 0, 64, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r3dsh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kfxhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dmbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dyksl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03n5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atm3l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3dsh")
+}],
+"loop": false,
+"name": &"gate",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23fo7"]
+size = Vector2(12, 80)
+
+[node name="Gate" type="StaticBody2D" unique_id=1980445872]
+script = ExtResource("1_hn85u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=75815496]
+position = Vector2(21, 0)
+sprite_frames = SubResource("SpriteFrames_r3dsh")
+animation = &"gate"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1625480399]
+position = Vector2(6, 0)
+shape = SubResource("RectangleShape2D_23fo7")
+
+[node name="GateOpenSound" type="AudioStreamPlayer2D" parent="." unique_id=1703544030]
+stream = ExtResource("3_4dmbs")
+volume_db = -5.0
+
+[node name="GateCloseSound" type="AudioStreamPlayer2D" parent="." unique_id=2000573766]
+stream = ExtResource("4_dyksl")
+volume_db = -5.0

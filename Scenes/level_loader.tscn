@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://caop2op24rjju"]
+
+[ext_resource type="Script" uid="uid://14c6axyebb7d" path="res://level_loader.gd" id="1_15w05"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w5prw"]
+size = Vector2(48, 64)
+
+[node name="LevelLoader" type="Area2D" unique_id=638299212]
+collision_mask = 2
+script = ExtResource("1_15w05")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=192123842]
+shape = SubResource("RectangleShape2D_w5prw")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

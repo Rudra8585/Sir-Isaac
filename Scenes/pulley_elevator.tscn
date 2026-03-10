@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bnfjwj6uc3gra"]
+
+[ext_resource type="Texture2D" uid="uid://b1c4hobr8ct4o" path="res://Sprites/pulley_top.png" id="1_il7uk"]
+[ext_resource type="Script" uid="uid://dvsykxlrit50f" path="res://Scripts/pulley_elevator.gd" id="1_ldmv5"]
+[ext_resource type="Texture2D" uid="uid://dbwfrkabpnhy3" path="res://Sprites/pulley_bottom.png" id="2_jwksw"]
+[ext_resource type="Texture2D" uid="uid://brxu5xwa6ampk" path="res://Sprites/pulley_middle.png" id="2_ldmv5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldmv5"]
+size = Vector2(58, 7)
+
+[node name="Pulley_elevator" type="Node2D" unique_id=1512246315]
+script = ExtResource("1_ldmv5")
+
+[node name="top" type="Sprite2D" parent="." unique_id=529369647]
+position = Vector2(0, -16)
+texture = ExtResource("1_il7uk")
+
+[node name="rope" type="TextureRect" parent="." unique_id=808135287]
+offset_left = -32.0
+offset_top = -8.0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_ldmv5")
+stretch_mode = 1
+
+[node name="platform" type="AnimatableBody2D" parent="." unique_id=1578631531]
+position = Vector2(0, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="platform" unique_id=1690405692]
+texture = ExtResource("2_jwksw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform" unique_id=353424181]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_ldmv5")
+one_way_collision = true
+
+[node name="RayCast2D" type="RayCast2D" parent="platform" unique_id=265520640]
+position = Vector2(0, 31)
+target_position = Vector2(0, 2000)

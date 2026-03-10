@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://bjohx2hep7dwt"]
+
+[ext_resource type="Script" uid="uid://bu3f7pqwxii23" path="res://Scripts/gravity_block.gd" id="1_xnp7i"]
+[ext_resource type="Texture2D" uid="uid://s5kajqdeui82" path="res://Sprites/GravityBlocklit.png" id="2_nho6y"]
+[ext_resource type="Texture2D" uid="uid://dwsunlgfnqrmr" path="res://Sprites/GravityBlockUnlit.png" id="3_laqvf"]
+[ext_resource type="Texture2D" uid="uid://crgmnuvxip6fl" path="res://Sprites/GravityBlockUI.png" id="4_xkbis"]
+[ext_resource type="Texture2D" uid="uid://dllihhjufhchj" path="res://Sprites/arrow.png" id="5_1sfms"]
+[ext_resource type="AudioStream" uid="uid://cmoq3nph1dgjd" path="res://Sound effects/magic.wav" id="6_1sfms"]
+[ext_resource type="AudioStream" uid="uid://dcwiydoojnb" path="res://Sound effects/rock1.wav" id="7_6h5ml"]
+[ext_resource type="AudioStream" uid="uid://berretxn5dvcu" path="res://Sound effects/rock2.wav" id="8_4npqk"]
+
+[sub_resource type="Gradient" id="Gradient_xkbis"]
+colors = PackedColorArray(0.94471157, 0.94471157, 0.94471157, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1sfms"]
+gradient = SubResource("Gradient_xkbis")
+width = 240
+height = 240
+fill = 1
+fill_from = Vector2(0.49131945, 0.5086806)
+fill_to = Vector2(0.8489583, 0.8489583)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nho6y"]
+size = Vector2(31, 31)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5feh1"]
+streams_count = 2
+stream_0/stream = ExtResource("7_6h5ml")
+stream_1/stream = ExtResource("8_4npqk")
+
+[node name="Gravity_Block" type="CharacterBody2D" unique_id=477594387 groups=["block"]]
+z_index = 5
+collision_layer = 4
+collision_mask = 5
+input_pickable = true
+safe_margin = 0.1
+script = ExtResource("1_xnp7i")
+
+[node name="LitSprite2D" type="Sprite2D" parent="." unique_id=649033690]
+texture = ExtResource("2_nho6y")
+
+[node name="PointLight2D" type="PointLight2D" parent="LitSprite2D" unique_id=1084399548]
+color = Color(1, 0, 1, 1)
+texture = SubResource("GradientTexture2D_1sfms")
+texture_scale = 0.2
+
+[node name="UnlitSprite2D" type="Sprite2D" parent="." unique_id=6797096]
+visible = false
+texture = ExtResource("3_laqvf")
+region_rect = Rect2(50, 50, 0, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800219715]
+shape = SubResource("RectangleShape2D_nho6y")
+
+[node name="UIPivot" type="Marker2D" parent="." unique_id=1794413615]
+visible = false
+z_index = 1
+
+[node name="UISprite2D" type="Sprite2D" parent="UIPivot" unique_id=1033088926]
+position = Vector2(8, 0)
+rotation = 1.5707964
+texture = ExtResource("4_xkbis")
+
+[node name="arrowUISprite2D" type="Sprite2D" parent="UIPivot/UISprite2D" unique_id=900108686]
+position = Vector2(-4.371139e-07, -10)
+texture = ExtResource("5_1sfms")
+
+[node name="GravitySound" type="AudioStreamPlayer" parent="." unique_id=455882438]
+stream = ExtResource("6_1sfms")
+volume_db = -9.0
+
+[node name="ImpactSound" type="AudioStreamPlayer2D" parent="." unique_id=44684078]
+stream = SubResource("AudioStreamRandomizer_5feh1")
+volume_db = -5.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,13 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://cf7xpccnimpne"]
+
+[ext_resource type="AudioStream" uid="uid://2vduyinx5ni5" path="res://Sound effects/Stone Chain Run 1.wav" id="1_y55qu"]
+[ext_resource type="AudioStream" uid="uid://buyvdest4cnte" path="res://Sound effects/Stone Chain Run 2.wav" id="2_l1ll5"]
+[ext_resource type="AudioStream" uid="uid://epgaie6ooqvd" path="res://Sound effects/Stone Chain Run 3.wav" id="3_0bwbl"]
+[ext_resource type="AudioStream" uid="uid://csasixxbc6d83" path="res://Sound effects/Stone Chain Run 4.wav" id="4_2ok54"]
+
+[resource]
+streams_count = 4
+stream_0/stream = ExtResource("1_y55qu")
+stream_1/stream = ExtResource("2_l1ll5")
+stream_2/stream = ExtResource("3_0bwbl")
+stream_3/stream = ExtResource("4_2ok54")
